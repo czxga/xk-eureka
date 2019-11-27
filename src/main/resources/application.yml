@@ -1,0 +1,27 @@
+server:
+  port: ${app_port:1111}
+spring:
+  application:
+    name: ${app_name:eureka-server}
+
+eureka:
+  instance:
+    hostname: ${hostname:eureka}
+  server:
+    # 关闭自我保护
+
+    enableSelfPreservation: false
+    eviction-interval-timer-in-ms: 5000
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      # 从环境变量获取其他节点URL 默认eureka
+      defaultZone: ${eureka_url:http://hcloud:hcloud123@eureka:${server.port}/eureka/}
+    instance:
+      appname: ${app_name:eureka-server}
+      preferIpAddress: false
+
+
+
+
